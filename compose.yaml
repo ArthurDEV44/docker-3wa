@@ -5,6 +5,9 @@ services:
     container_name: nginx_web
     ports:
       - "${NGINX_PORT}:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+
   database:
     image: postgres
     container_name: postgres_db
@@ -12,5 +15,10 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: docker-devops
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+volumes:
+  postgres_data:
