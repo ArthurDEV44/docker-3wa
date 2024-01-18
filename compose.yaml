@@ -2,5 +2,14 @@ version: '3.8'
 services:
   web:
     image: nginx
+    container_name: nginx_web
     ports:
       - "8080:80"
+
+  database:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      POSTGRES_PASSWORD: postgres  # Remplacez ceci par un mot de passe sûr
+    ports:
+      - "5432:5432"
